@@ -151,7 +151,7 @@ def start(update: Update, context: CallbackContext) -> None:
     if user.username == 'Mohammed_Alakhras':
         update.message.reply_text('مرحباً @Mohammed_Alakhras')
     else:
-        update.message.reply_text('This Bot is intended for its owner only @Mohammed_Alakhras.\nOther users can only use this bot to chat with the PaLM 2 AI model by using chat command:\n/chat YOUR_MESSAGE\nWithin this conversation. ')
+        update.message.reply_text('This Bot is intended for its owner only @Mohammed_Alakhras.\nOther users can only use this bot to chat with the PaLM 2 AI model by using chat command:\n/chat YOUR_MESSAGE\nWithin this conversation.\n or they can use /gen description \n to generate image from text. ')
         admin_message = f"Start\nUsername: @{user.username}\nFirst Name: {user.first_name}\nLast Name: {user.last_name}\nID: [Link](tg://user?id={user.id})"
         context.bot.send_message(chat_id='917477025', text=admin_message, parse_mode='Markdown')
 
