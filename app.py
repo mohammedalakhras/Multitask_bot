@@ -16,8 +16,8 @@ import io
 
 #Bard API
 
-from bardapi import SESSION_HEADERS
-from bardapi import Bard
+#from bardapi import SESSION_HEADERS
+#from bardapi import Bard
 
 #token="dwhVsYmoF88n-5syt-g8v6ia1M4T3uTQM7kywk8wC6viRMI04u8KDE4KnIPN9rFnawKTyg."
 
