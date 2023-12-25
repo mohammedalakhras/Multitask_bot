@@ -303,6 +303,7 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler("aj", AJup_google_drive_folder))
 
     dispatcher.add_handler(CommandHandler("chat", chat))
+    dispatcher.add_handler(CommandHandler("gen", gen))
 
 
     dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command & ~Filters.reply, forward_to_admin))
