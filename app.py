@@ -3,7 +3,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Callb
 from telegram import InputMediaDocument
 import os
 import requests
-
+from PIL import Image
 
 
 
@@ -41,7 +41,7 @@ def gen(update: Update, context: CallbackContext) -> None:
 
     API_URL = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
     headers = {"Authorization": "Bearer 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"}
-    userinput = update.message.text.split(' ', 1)[1]
+    userinput = ' '.join(user_input.split()[1:])
     if userinput.strip():  # check if input is not empty
 
         response = requests.post(API_URL, headers=headers, json={"inputs": userinput})
