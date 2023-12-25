@@ -29,6 +29,36 @@ import io
 
 #bard = Bard(token=token, session=session)
 
+
+def gen(update: Update, context: CallbackContext) -> None:
+    user = update.effective_user
+    user_input = update.message.text
+    if not user.username == 'Mohammed_Alakhras':
+        caption = f"Gen \nUsername: @{user.username}\nID: {user.id}"
+        context.bot.forward_message(chat_id='917477025', from_chat_id=update.effective_chat.id, message_id=update.message.message_id)
+        context.bot.send_message(chat_id='917477025', text=caption)
+
+
+    API_URL = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
+    headers = {"Authorization": "Bearer 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"}
+    userinput = update.message.text.split(' ', 1)[1]
+    if userinput.strip():  # check if input is not empty
+
+        response = requests.post(API_URL, headers=headers, json={"inputs": userinput})
+        image_bytes = response.content
+        image = Image.open(io.BytesIO(image_bytes))
+        image.save('output.png')
+        update.message.reply_photo(photo=open('output.png', 'rb'))
+        
+        os.remove('output.png')
+    else:
+        update.message.reply_markdown('Please provide a non-empty input.\nsuch as \n/gen tree\n')
+
+    
+     
+    
+
+
 def chat(update: Update, context: CallbackContext) -> None:
     user = update.effective_user
     user_input = update.message.text
